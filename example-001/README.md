@@ -15,3 +15,5 @@ Demos a vulnerable page impacting the contents of a non-vulnerable page on the s
 ![Vuln page loaded](1.png)
 
 ![Non-vulnerable page exploited](2.png)
+
+![Modified action for login submission](3.png)
